@@ -9,10 +9,17 @@ Poule ez = new Poule("ez", "gauloise", 0.8, Taille.L);
 ginger.Afficher();
 
 Poulailler P1 = new Poulailler("P1",20);
+Poulailler P2 = new Poulailler("P2", 5);
 
 P1.AjouterPoule(P1,ginger);
-P1.AjouterPoule(P1,ez);
+P2.AjouterPoule(P2,ez);
 P1.afficherPoulailler();
+P2.afficherPoulailler();
 
-P1.SupprimerPoule(P1, "ez");
+//P1.SupprimerPoule(P1, "ez");
 P1.afficherPoulailler();
+P2.afficherPoulailler();
+
+Poulailler P3 = P1.FusionnerPoulaillers(P1, P2);
+P3.afficherPoulailler();
+

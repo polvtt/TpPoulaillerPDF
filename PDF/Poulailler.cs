@@ -57,6 +57,16 @@ namespace PDF
             }
             Console.WriteLine("\nCapacite max du poulailler "+Nom +": "+CapaciteMaximale+"\n");
         }
+
+        public Poulailler FusionnerPoulaillers(Poulailler poulailler1, Poulailler poulailler2)
+        {
+            Poulailler poulaillerFusionne = new Poulailler("Poulailler Fusionné", poulailler1.CapaciteMaximale + poulailler2.CapaciteMaximale);
+
+            poulaillerFusionne.Poules.AddRange(poulailler1.Poules);
+            poulaillerFusionne.Poules.AddRange(poulailler2.Poules);
+
+            return poulaillerFusionne;
+        }
     }
 
 }
