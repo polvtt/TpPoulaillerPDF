@@ -15,16 +15,16 @@ namespace PDF
         /// Nom de la poule
         /// </summary>
         /// <example>Germaine, Roussette, Ginger, Raymonde</example>
-        string nom;
+        public string nom;
         /// <summary>
         /// Race de la poule
         /// </summary>
         /// <example>Sussex, Marans, Gatinaise, Gauloise</example>
-        string race;
+        public string race;
         /// <summary>
         /// Nb moyen d'oeufs pondus par jour
         /// </summary>
-        double intensitePonte;
+        public double intensitePonte;
         /// <summary>
         /// Taille de la poule
         /// </summary>

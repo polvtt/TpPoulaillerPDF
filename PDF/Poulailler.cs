@@ -10,9 +10,9 @@ namespace PDF
     internal class Poulailler
     {
 
-        public string Nom;
-        public int CapaciteMaximale;
-        public List<Poule> Poules;
+        public string Nom { get; set; }
+        public int CapaciteMaximale { get; set; }
+        public List<Poule> Poules { get; set; }
 
         public Poulailler(string nom, int capaciteMaximale)
         {
@@ -21,12 +21,12 @@ namespace PDF
             Poules = new List<Poule>();
         }
 
-        public void AjouterPoule(Poule poule)
+        public void AjouterPoule(Poulailler poulailler, Poule poule)
         {
-            if (Poules.Count < CapaciteMaximale)
+            if (poulailler.Poules.Count < CapaciteMaximale)
             {
-                Poules.Add(poule);
-                Console.WriteLine("La poule a été ajoutée au poulailler.");
+                poulailler.Poules.Add(poule);
+                Console.WriteLine($"La poule {poule.nom} a été ajoutée au poulailler.\n");
             }
             else
             {
@@ -34,30 +34,29 @@ namespace PDF
             }
         }
 
-        public void AfficherPoules()
+        public void SupprimerPoule(Poulailler poulailler, string nomPoule)
         {
-            Console.WriteLine($"Poulailler : {Nom}");
-            Console.WriteLine("Liste des poules :");
-
-            for (int i = 0; i < Poules.Count; i++)
+            Poule pouleASupprimer = poulailler.Poules.Find(p => p.nom == nomPoule);
+            if (pouleASupprimer != null)
             {
-                Console.WriteLine($"Poule {i + 1}: {Poules[i].Nom}");
-            }
-
-            Console.WriteLine($"Total de poules : {Poules.Count}");
-        }
-
-        public void SupprimerPoule(int numeroAffichage)
-        {
-            if (numeroAffichage >= 1 && numeroAffichage <= Poules.Count)
-            {
-                Poules.RemoveAt(numeroAffichage - 1);
-                Console.WriteLine("La poule a été supprimée du poulailler.");
+                poulailler.Poules.Remove(pouleASupprimer);
+                Console.WriteLine("La poule " + nomPoule + " a été supprimée du poulailler.\n");
             }
             else
             {
-                Console.WriteLine("Numéro d'affichage invalide. Veuillez spécifier un numéro valide.");
+                Console.WriteLine("La poule " + nomPoule + " n'a pas été trouvée dans le poulailler.\n");
             }
         }
+
+        public void afficherPoulailler()
+        {
+            Console.WriteLine("Poules du pouillailer "+ Nom+":");
+            for (int i = 0; i < Poules.Count; i++)
+            {
+                Console.WriteLine($"Poule no"+i+": "+Poules[i].nom);
+            }
+            Console.WriteLine("\nCapacite max du poulailler "+Nom +": "+CapaciteMaximale+"\n");
+        }
     }
+
 }
